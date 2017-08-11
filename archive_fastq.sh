@@ -74,7 +74,7 @@ echo COMPRESSING FASTQs
 COMPLIST=""
 for x in READS*; do
 	JCOMP=archive_comp_`date +%N`
-	qsub -V -S /bin/bash -N $JCOMP -l mfree=200M $BIN/archive_compressFQ.sh $ARCHIVEDIR/$OUTDIR/${x}
+	qsub -V -S /bin/bash -N $JCOMP -l mfree=200M -l h_rt=24:0:0 $BIN/archive_compressFQ.sh $ARCHIVEDIR/$OUTDIR/${x}
 	COMPLIST+=$JCOMP','
 done
 
